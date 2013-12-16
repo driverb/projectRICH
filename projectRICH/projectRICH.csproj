@@ -51,14 +51,15 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Object\Animal.cs" />
     <Compile Include="Render\IRender.cs" />
-    <Compile Include="Object\Attribute\AttributeCollection.cs" />
-    <Compile Include="Object\Attribute\AttributeCommand.cs" />
-    <Compile Include="Object\Attribute\Drawable.cs" />
-    <Compile Include="Object\Attribute\IAttribute.cs" />
+    <Compile Include="Object\Module\AttributeCollection.cs" />
+    <Compile Include="Object\Module\AttributeCommand.cs" />
+    <Compile Include="Object\Module\Drawable.cs" />
+    <Compile Include="Object\Module\IModule.cs" />
     <Compile Include="Object\ISerializable.cs" />
-    <Compile Include="Object\Attribute\Moving.cs" />
-    <Compile Include="Object\Attribute\AttributeName.cs" />
+    <Compile Include="Object\Module\Moving.cs" />
+    <Compile Include="Object\Module\AttributeName.cs" />
     <Compile Include="Object\GameObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,20 +8,20 @@ namespace projectRICH.Object
 {
     class GameObject : ISerializable
     {
-        private Attribute.AttributeCollection attributes = new Attribute.AttributeCollection();
+        private Module.ModuleCollection attributes = new Module.ModuleCollection();
         static private Dictionary<string, Tuple<Type, System.Reflection.MethodInfo>> commands = new Dictionary<string, Tuple<Type, System.Reflection.MethodInfo>>();
         static GameObject()
         {
             var assem = System.Reflection.Assembly.GetExecutingAssembly();
             foreach (var t in assem.GetTypes())
             {
-                if (t.GetInterfaces().Any((c) => { return c.Equals(typeof(Attribute.IAttribute)); }))
+                if (t.GetInterfaces().Any((c) => { return c.Equals(typeof(Module.IModule)); }))
                 {
                     foreach (var m in t.GetMethods())
                     {
-                        foreach(var a in m.GetCustomAttributes(typeof(Attribute.AttributeCommand), false))
+                        foreach(var a in m.GetCustomAttributes(typeof(Module.ModuleCommand), false))
                         {
-                            var cname = (a as Attribute.AttributeCommand).Name;
+                            var cname = (a as Module.ModuleCommand).Name;
                             
                             if (commands.ContainsKey(cname))
                             {
@@ -39,7 +39,7 @@ namespace projectRICH.Object
             return 0;
         }
 
-        private T Query<T>() where T : class, Attribute.IAttribute
+        private T Query<T>() where T : class, Module.IModule
         {
             T attr = attributes.Find<T>();
             if (attr == null)
