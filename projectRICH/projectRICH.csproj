@@ -51,15 +51,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalClock.cs" />
     <Compile Include="Object\Animal.cs" />
+    <Compile Include="Object\IGameObject.cs" />
+    <Compile Include="Object\Module\ModuleAttribute.cs" />
+    <Compile Include="Object\Monster.cs" />
     <Compile Include="Render\IRender.cs" />
-    <Compile Include="Object\Module\AttributeCollection.cs" />
-    <Compile Include="Object\Module\AttributeCommand.cs" />
+    <Compile Include="Object\Module\ModuleCommand.cs" />
     <Compile Include="Object\Module\Drawable.cs" />
     <Compile Include="Object\Module\IModule.cs" />
     <Compile Include="Object\ISerializable.cs" />
     <Compile Include="Object\Module\Moving.cs" />
-    <Compile Include="Object\Module\AttributeName.cs" />
+    <Compile Include="Object\Module\ModuleName.cs" />
     <Compile Include="Object\GameObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,7 +75,9 @@
     <Compile Include="WorldView.Designer.cs">
       <DependentUpon>WorldView.cs</DependentUpon>
     </Compile>
+    <Compile Include="World\GameObjectManagers.cs" />
     <Compile Include="World\Ground.cs" />
+    <Compile Include="World\RenderManager.cs" />
     <Compile Include="World\Tile\Grass.cs" />
     <Compile Include="World\Tile\ITile.cs" />
     <EmbeddedResource Include="Form1.resx">

@@ -10,7 +10,8 @@ namespace projectRICH.Render
     {
         private System.Drawing.Rectangle boundary;
         private T shape;
-        private System.Drawing.Drawing2D.Matrix transform;
+        private System.Drawing.Drawing2D.Matrix transform = new System.Drawing.Drawing2D.Matrix();
+        public Action<System.Drawing.Drawing2D.Matrix> TransformCallback { get; set; }
 
         public ShapeRenderer(T shape)
         {
@@ -19,6 +20,12 @@ namespace projectRICH.Render
 
         public void OnRender(System.Drawing.Graphics g)
         {
+            if (TransformCallback != null)
+            {
+                transform.Reset();
+                TransformCallback(transform);
+            }
+
             g.Transform = transform;
             shape.Draw(g);
         }

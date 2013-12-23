@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projectRICH.Entity
 {
-    struct Vector
+    public struct Vector
     {
         public float X;
         public float Y;
@@ -20,6 +20,11 @@ namespace projectRICH.Entity
         public void Reset()
         {
             X = Y = 0;
+        }
+
+        public bool IsZero()
+        {
+            return X == Y && X == 0;
         }
 
         public void Normalize()

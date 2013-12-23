@@ -1,0 +1,10 @@
+D:\dev\projectRICH\projectRICH\obj\Debug\projectRICH.Form1.resources
+D:\dev\projectRICH\projectRICH\obj\Debug\projectRICH.Properties.Resources.resources
+D:\dev\projectRICH\projectRICH\obj\Debug\projectRICH.WorldView.resources
+D:\dev\projectRICH\projectRICH\obj\Debug\projectRICH.csproj.GenerateResource.Cache
+D:\dev\projectRICH\projectRICH\bin\Debug\projectRICH.exe.config
+D:\dev\projectRICH\projectRICH\bin\Debug\projectRICH.exe
+D:\dev\projectRICH\projectRICH\bin\Debug\projectRICH.pdb
+D:\dev\projectRICH\projectRICH\obj\Debug\projectRICH.exe
+D:\dev\projectRICH\projectRICH\obj\Debug\projectRICH.pdb
+D:\dev\projectRICH\projectRICH\obj\Debug\projectRICH.csprojResolveAssemblyReference.cache

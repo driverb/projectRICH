@@ -6,61 +6,75 @@ using System.Threading.Tasks;
 
 namespace projectRICH.Object.Module
 {
-    class Moving : Module.IModule, ISerializable
+    public class Moving : IModule
     {
         private Entity.Vector currentPosition;
         private Entity.Vector currentVelocity;
-        private Entity.Vector maxVelocity;
+        private float maxVelocity = 0.00001f;
         private Entity.Vector targetPosition;
-
-        private long lastUpdateTime;
-
-        public Entity.Vector CurrentPosition
-        {
-            get { return currentPosition; }
-        }
+        private long lastPositionUpdateTime;
 
         public Entity.Vector CurrentVelocity
         {
             get { return currentVelocity; }
         }
 
-        public void OnUpdate(long currentTime)
+        [ModuleCommand("GetCurrentPosition")]
+        public Entity.Vector GetCurrentPosition(IGameObject owner)
         {
-            var elapsed = currentTime - lastUpdateTime;
-            var nextPosition = currentPosition.Add(currentVelocity.Multiply(elapsed));
-
-            var currentToTarget = targetPosition.Diff(currentPosition);
-            var nextToTarget = targetPosition.Diff(nextPosition);
-
-            if (currentToTarget.Dot(nextToTarget) < 0)
+            if (!currentVelocity.IsZero())
             {
-                currentPosition = targetPosition;
-                Stop();
-            }
-            else
-            {
-                currentPosition = nextPosition;
-            }
+                var now = GlobalClock.Now;
 
-            lastUpdateTime = currentTime;
+                if (now != lastPositionUpdateTime)
+                {
+                    var elapsed = now - lastPositionUpdateTime;
+                    var nextPosition = currentPosition.Add(currentVelocity.Multiply(elapsed));
+
+                    var currentToTarget = targetPosition.Diff(currentPosition);
+                    var nextToTarget = targetPosition.Diff(nextPosition);
+
+                    if (currentToTarget.Dot(nextToTarget) < 0)
+                    {
+                        currentPosition = targetPosition;
+                        Stop(owner);
+                    }
+                    else
+                    {
+                        currentPosition = nextPosition;
+                    }
+                }
+
+                lastPositionUpdateTime = now;
+            }
+            return currentPosition; 
         }
 
         [ModuleCommand("Stop")]
-        public void Stop()
+        public void Stop(IGameObject owner)
         {
             currentVelocity.Reset();
         }
 
         [ModuleCommand("WalkTo")]
-        public void WalkTo(Entity.Vector targetPosition)
+        public void WalkTo(IGameObject owner, Entity.Vector targetPosition)
         {
             this.targetPosition = targetPosition;
 
-            var diff = CurrentPosition.Diff(targetPosition);
+            var diff = targetPosition.Diff(GetCurrentPosition(owner));
             diff.Normalize();
-
+            lastPositionUpdateTime = GlobalClock.Now;
             currentVelocity = diff.Multiply(maxVelocity);
+        }
+
+        [ModuleCommand("SetPosition")]
+        public void SetPosition(IGameObject owner, Entity.Vector targetPosition)
+        {
+            currentPosition = targetPosition;
+            lastPositionUpdateTime = GlobalClock.Now;
+
+            currentVelocity.Reset();
+
         }
 
         public void ReadFrom(System.IO.Stream strm)

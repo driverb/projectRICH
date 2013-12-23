@@ -8,6 +8,5 @@ namespace projectRICH.Object.Module
 {
     interface IModule
     {
-        void OnUpdate(long currentTime);
     }
 }

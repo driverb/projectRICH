@@ -38,6 +38,7 @@
             this.worldView.Name = "worldView";
             this.worldView.Size = new System.Drawing.Size(827, 424);
             this.worldView.TabIndex = 0;
+            this.worldView.Click += new System.EventHandler(this.worldView_Click);
             // 
             // Form1
             // 

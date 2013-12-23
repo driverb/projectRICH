@@ -10,7 +10,7 @@ namespace projectRICH.Render.Shape
     {
         public void Draw(System.Drawing.Graphics g)
         {
-            throw new NotImplementedException();
+            g.FillEllipse(System.Drawing.SystemBrushes.Window, 0, 0, 100, 100);
         }
     }
 }

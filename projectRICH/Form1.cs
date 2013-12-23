@@ -19,7 +19,15 @@ namespace projectRICH
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var go = new Object.GameObject();
+            World.GameObjectManagers.Player.Execute("SetPosition", new Entity.Vector(100, 100));
+            World.GameObjectManagers.Player.Execute("Show");
+        }
+
+        private void worldView_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs arg = (MouseEventArgs)e;
+
+            World.GameObjectManagers.Player.Execute("WalkTo", new Entity.Vector(arg.X, arg.Y));
         }
     }
 }

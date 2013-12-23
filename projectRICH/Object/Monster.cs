@@ -8,9 +8,7 @@ namespace projectRICH.Object
 {
     [Module.Module(typeof(Module.Moving))]
     [Module.Module(typeof(Module.Drawable))]
-    class Animal : GameObject<Animal>
+    public class Monster : GameObject<Monster>
     {
     }
-
-
 }

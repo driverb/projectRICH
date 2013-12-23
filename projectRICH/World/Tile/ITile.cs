@@ -8,7 +8,7 @@ namespace projectRICH.World.Tile
 {
     interface ITile
     {
-        void OnEnter(Object.GameObject gameObject);
-        void OnLeave(Object.GameObject gameObject);
+        void OnEnter(Object.IGameObject gameObject);
+        void OnLeave(Object.IGameObject gameObject);
     }
 }

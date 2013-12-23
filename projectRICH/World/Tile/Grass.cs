@@ -8,12 +8,12 @@ namespace projectRICH.World.Tile
 {
     class Grass : ITile
     {
-        public void OnEnter(Object.GameObject gameObject)
+        public void OnEnter(Object.IGameObject gameObject)
         {
             throw new NotImplementedException();
         }
 
-        public void OnLeave(Object.GameObject gameObject)
+        public void OnLeave(Object.IGameObject gameObject)
         {
             throw new NotImplementedException();
         }
