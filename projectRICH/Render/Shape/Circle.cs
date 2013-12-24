@@ -10,7 +10,7 @@ namespace projectRICH.Render.Shape
     {
         public void Draw(System.Drawing.Graphics g)
         {
-            g.FillEllipse(System.Drawing.SystemBrushes.Window, 0, 0, 100, 100);
+            g.FillEllipse(System.Drawing.SystemBrushes.Window, -5, -5, 10, 10);
         }
     }
 }

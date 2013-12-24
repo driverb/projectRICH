@@ -38,6 +38,7 @@ namespace projectRICH
                 Image backImage = new Bitmap(1, 1);
                 backGraphic = Graphics.FromImage(backImage);
                 var backgroundBrush = new System.Drawing.SolidBrush(Color.Blue);
+                Bitmap backgroundTexture = new Bitmap(@"D:\dev\projectRICH\projectRICH\Resources\\배경.png");
                 while (true)
                 {
                     
@@ -68,7 +69,12 @@ namespace projectRICH
 
                     lastTick = tick;
                     backGraphic.FillRectangle(backgroundBrush, 0, 0, width, height);
+
+                    var originTransform = backGraphic.Transform;
+                    backGraphic.DrawImage(backgroundTexture, 0, 0);
                     World.RenderManager.Render(backGraphic);
+                    backGraphic.Transform = originTransform;
+
                     lock (intersectGraphic)
                     {
                         intersectGraphic.DrawImage(backImage, 0, 0);
